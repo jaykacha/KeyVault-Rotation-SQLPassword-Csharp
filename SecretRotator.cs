@@ -25,14 +25,14 @@ namespace Microsoft.KeyVault
 
             //Retrieve Secret Info
             var credentialId = secret.Properties.Tags.ContainsKey(CredentialIdTag) ? secret.Properties.Tags[CredentialIdTag] : "";
-            var providerAddress = secret.Properties.Tags.ContainsKey(ProviderAddressTag) ? secret.Properties.Tags[ProviderAddressTag] : "";
+            //var providerAddress = secret.Properties.Tags.ContainsKey(ProviderAddressTag) ? secret.Properties.Tags[ProviderAddressTag] : "";
             var validityPeriodDays = secret.Properties.Tags.ContainsKey(ValidityPeriodDaysTag) ? secret.Properties.Tags[ValidityPeriodDaysTag] : "";
-            log.LogInformation($"Provider Address: {providerAddress}");
+            //log.LogInformation($"Provider Address: {providerAddress}");
             log.LogInformation($"Credential Id: {credentialId}");
 
             //Check Service Provider connection
-            CheckServiceConnection(secret);
-            log.LogInformation("Service  Connection Validated");
+            //CheckServiceConnection(secret);
+            //log.LogInformation("Service  Connection Validated");
             
             //Create new password
             var randomPassword = CreateRandomPassword();
@@ -43,9 +43,9 @@ namespace Microsoft.KeyVault
             log.LogInformation("New Secret Version Generated");
 
             //Update Service Provider with new password
-            UpdateServicePassword(secret, randomPassword);
-            log.LogInformation("Password Changed");
-            log.LogInformation($"Secret Rotated Successfully");
+            //UpdateServicePassword(secret, randomPassword);
+            //log.LogInformation("Password Changed");
+            //log.LogInformation($"Secret Rotated Successfully");
         }
 
         private static void CreateNewSecretVersion(SecretClient client, KeyVaultSecret secret, string newSecretValue)
